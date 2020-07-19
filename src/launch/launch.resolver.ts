@@ -1,4 +1,17 @@
-import { Resolver } from '@nestjs/graphql';
+import { Resolver, Args, Query } from '@nestjs/graphql';
+import { LaunchService } from './launch.service';
 
 @Resolver('Launch')
-export class LaunchResolver {}
+export class LaunchResolver {
+    constructor(private launchService: LaunchService) {}
+
+    @Query()
+    launches() {
+        return this.launchService.getAllLaunches();
+    }
+
+    @Query()
+    launch(@Args('id') id: number) {
+        return this.launchService.getLaunchById(id);
+    }
+}
