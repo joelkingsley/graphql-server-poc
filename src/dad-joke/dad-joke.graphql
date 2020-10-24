@@ -1,0 +1,9 @@
+type DadJoke {
+    id: String
+    joke: String
+    status: Int
+}
+
+type Query {
+  dadJoke: DadJoke
+}
