@@ -11,6 +11,18 @@ export enum PatchSize {
     LARGE = "LARGE"
 }
 
+export interface DadJoke {
+    id?: string;
+    joke?: string;
+    status?: number;
+}
+
+export interface IQuery {
+    dadJoke(): DadJoke | Promise<DadJoke>;
+    launches(): Launch[] | Promise<Launch[]>;
+    launch(id: string): Launch | Promise<Launch>;
+}
+
 export interface Launch {
     id: string;
     site?: string;
@@ -27,9 +39,4 @@ export interface Rocket {
 export interface Mission {
     name?: string;
     missionPatch?: string;
-}
-
-export interface IQuery {
-    launches(): Launch[] | Promise<Launch[]>;
-    launch(id: string): Launch | Promise<Launch>;
 }
